@@ -1,27 +1,16 @@
-import mysql from "mysql";
+import mongoose from "mongoose";
 import dotenv from "dotenv";
 
 dotenv.config();
 
-// https://stackoverflow.com/a/53145407 - socketPath
-
-const db_config = {
-    socketPath: process.env.DB_SOCKET_PATH,
-    user: process.env.DB_USER,
-    password: process.env.DB_PASSWORD,
-    host: process.env.DB_HOST,
-    database: process.env.DB_NAME,
+const connectDB = async () => {
+    try {
+        const conn = await mongoose.connect(process.env.DB_URI);
+        console.log(`MongoDB Connected: ${conn.connection.host}`);
+    } catch (error) {
+        console.error(`Error: ${error.message}`);
+        process.exit(1);
+    }
 };
 
-const connection = mysql.createConnection(db_config);
-
-connection.connect((err) => {
-    if (err) {
-        console.error("Error connecting to database: " + err.stack);
-        return;
-    }
-
-    console.log("Connected to database as id: " + connection.threadId);
-});
-
-export default connection;
+export default connectDB;
