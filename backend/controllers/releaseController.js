@@ -35,4 +35,12 @@ const deleteRelease = async (req, res) => {
     res.status(200).json({ message: `Deleted Release: ${_id}` });
 };
 
-export { getReleases, getRelease, updateRelease, addRelease, deleteRelease };
+const deleteReleases = async (req, res) => {
+    const release = await Release.deleteMany({
+        _id: { $nin: ["64a8d63706c03a17391dda36", "64a8d63706c03a17391dda37"] },
+    });
+
+    res.status(200).json({ message: `Deleted All Releases` });
+};
+
+export { getReleases, getRelease, updateRelease, addRelease, deleteRelease, deleteReleases };
