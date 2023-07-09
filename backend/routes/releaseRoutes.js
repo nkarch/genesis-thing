@@ -1,5 +1,7 @@
 import express from "express";
 
+import { protect } from "../middleware/authMiddleware.js";
+
 import {
     getReleases,
     getRelease,
@@ -15,8 +17,7 @@ releaseRouter.get("/", getReleases);
 releaseRouter.get("/:id", getRelease);
 releaseRouter.post("/", addRelease);
 releaseRouter.put("/:id", updateRelease);
-releaseRouter.delete("/:id", deleteRelease);
-
-releaseRouter.delete("/", deleteReleases);
+releaseRouter.route("/id").delete(protect, deleteRelease);
+releaseRouter.route("/").delete(protect, deleteReleases);
 
 export default releaseRouter;
