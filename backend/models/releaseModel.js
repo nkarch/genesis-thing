@@ -1,15 +1,19 @@
 import mongoose from "mongoose";
 
-import { ReleaseTypes, Artists } from "../enums.js";
+import { Formats, Artists } from "../enums.js";
 
 const creditSchema = new mongoose.Schema({
     personId: {
         type: Number,
-        required: () => !this.name,
+        required: function () {
+            return !this.name;
+        },
     },
     name: {
         type: String,
-        required: () => !this.personId,
+        required: function () {
+            return !this.personId;
+        },
     },
     credit: {
         type: String,
@@ -22,7 +26,7 @@ const artworkSchema = new mongoose.Schema({
         type: String,
         required: false,
     },
-    imageId: {
+    imgId: {
         type: Number,
         required: true,
     },
@@ -47,7 +51,7 @@ const releaseSchema = mongoose.Schema({
     type: {
         type: String,
         required: true,
-        enum: ReleaseTypes,
+        enum: Object.keys(Formats),
     },
     slug: {
         type: String,
@@ -56,29 +60,27 @@ const releaseSchema = mongoose.Schema({
     artist: {
         type: String,
         required: true,
-        enum: Artists,
+        enum: Object.keys(Artists),
     },
-    meta: {
-        recorded: {
-            type: String,
-            required: true,
-        },
-        releaseDate: {
-            type: Date,
-            required: true,
-        },
-        studio: {
-            type: String,
-            required: false,
-        },
-        label: {
-            type: String,
-            required: false,
-        },
-        producer: {
-            type: String,
-            required: false,
-        },
+    recorded: {
+        type: String,
+        required: true,
+    },
+    releaseDate: {
+        type: Date,
+        required: true,
+    },
+    studio: {
+        type: String,
+        required: false,
+    },
+    label: {
+        type: String,
+        required: false,
+    },
+    producer: {
+        type: String,
+        required: false,
     },
     credits: {
         type: [creditSchema],
@@ -88,7 +90,7 @@ const releaseSchema = mongoose.Schema({
         type: artworkGroupSchema,
         required: false,
     },
-    body_text: {
+    bodyText: {
         type: String,
         required: false,
     },
