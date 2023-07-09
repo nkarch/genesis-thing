@@ -44,9 +44,7 @@ const deleteRelease = async (req, res) => {
 };
 
 const deleteReleases = async (req, res) => {
-    const release = await Release.deleteMany({
-        _id: { $nin: ["64a8d63706c03a17391dda36", "64a8d63706c03a17391dda37"] },
-    });
+    const release = await Release.deleteMany();
 
     res.json({ message: `Deleted All Releases` });
 };
