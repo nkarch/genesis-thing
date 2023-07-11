@@ -1,49 +1,60 @@
 import mongoose from "mongoose";
+import { autoIncrement } from "mongoose-plugin-autoinc";
 
 import { Formats, Artists } from "../enums.js";
 
-const creditSchema = new mongoose.Schema({
-    personId: {
-        type: Number,
-        required: function () {
-            return !this.name;
+const creditSchema = new mongoose.Schema(
+    {
+        personId: {
+            type: Number,
+            required: function () {
+                return !this.name;
+            },
+        },
+        name: {
+            type: String,
+            required: function () {
+                return !this.personId;
+            },
+        },
+        credit: {
+            type: String,
+            required: false,
         },
     },
-    name: {
-        type: String,
-        required: function () {
-            return !this.personId;
+    { _id: false }
+);
+
+const artworkSchema = new mongoose.Schema(
+    {
+        altText: {
+            type: String,
+            required: false,
+        },
+        imgId: {
+            type: Number,
+            required: true,
         },
     },
-    credit: {
-        type: String,
-        required: false,
-    },
-});
+    { _id: false }
+);
 
-const artworkSchema = new mongoose.Schema({
-    altText: {
-        type: String,
-        required: false,
+const artworkGroupSchema = new mongoose.Schema(
+    {
+        primary: {
+            type: artworkSchema,
+            required: false,
+        },
+        additional: {
+            type: [artworkSchema],
+            required: false,
+        },
     },
-    imgId: {
-        type: Number,
-        required: true,
-    },
-});
-
-const artworkGroupSchema = new mongoose.Schema({
-    primary: {
-        type: artworkSchema,
-        required: false,
-    },
-    additional: {
-        type: [artworkSchema],
-        required: false,
-    },
-});
+    { _id: false }
+);
 
 const releaseSchema = mongoose.Schema({
+    release_id: {},
     title: {
         type: String,
         required: true,
@@ -99,6 +110,8 @@ const releaseSchema = mongoose.Schema({
         required: false,
     },
 });
+
+releaseSchema.plugin(autoIncrement, { model: "Release", field: "releaseId" });
 
 const Release = mongoose.model("Release", releaseSchema);
 

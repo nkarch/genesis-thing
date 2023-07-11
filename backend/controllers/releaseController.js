@@ -7,11 +7,13 @@ const getReleases = async (req, res) => {
 };
 
 const getRelease = async (req, res) => {
-    const { id: _id } = req.params;
+    // const { id: _id } = req.params;
+    const { id } = req.params;
 
-    const release = await Release.findById(_id);
-
-    res.json({ release });
+    // const release = await Release.findById(_id);
+    const release = await Release.findOne({ releaseId: id });
+    console.log(release);
+    res.json(release);
 };
 
 const addRelease = async (req, res) => {
@@ -40,7 +42,7 @@ const deleteRelease = async (req, res) => {
 
     const release = await Release.deleteOne({ _id });
 
-    res.json({ message: `Deleted Release: ${_id}` });
+    res.json({ message: `Deleted Release: ${_id} (${release.title})` });
 };
 
 const deleteReleases = async (req, res) => {
