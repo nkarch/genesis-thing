@@ -4,7 +4,8 @@ import { protect } from "../middleware/authMiddleware.js";
 
 import {
     getReleases,
-    getRelease,
+    getReleaseById,
+    getReleaseBySlug,
     updateRelease,
     addRelease,
     deleteRelease,
@@ -14,7 +15,7 @@ import {
 const releaseRouter = express.Router();
 
 releaseRouter.get("/", getReleases);
-releaseRouter.get("/:id", getRelease);
+releaseRouter.get("/:slug", getReleaseBySlug);
 releaseRouter.post("/", addRelease);
 releaseRouter.put("/:id", updateRelease);
 releaseRouter.route("/id").delete(protect, deleteRelease);

@@ -6,10 +6,17 @@ const getReleases = async (req, res) => {
     res.json(releases);
 };
 
-const getRelease = async (req, res) => {
-    const { id } = req.params;
+const getReleaseById = async (req, res) => {
+    const { releaseId } = req.params;
 
-    const release = await Release.findOne({ releaseId: id });
+    const release = await Release.findOne({ releaseId });
+    res.json(release);
+};
+
+const getReleaseBySlug = async (req, res) => {
+    const { slug } = req.params;
+
+    const release = await Release.findOne({ slug });
     res.json(release);
 };
 
@@ -48,4 +55,12 @@ const deleteReleases = async (req, res) => {
     res.json({ message: `Deleted All Releases` });
 };
 
-export { getReleases, getRelease, updateRelease, addRelease, deleteRelease, deleteReleases };
+export {
+    getReleases,
+    getReleaseById,
+    getReleaseBySlug,
+    updateRelease,
+    addRelease,
+    deleteRelease,
+    deleteReleases,
+};
