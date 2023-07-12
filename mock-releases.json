@@ -1,0 +1,104 @@
+[
+    {
+        "title": "From Genesis to Revelation",
+        "type": "LP",
+        "slug": "from-genesis-to-revelation",
+        "artist": "GENESIS",
+        "recorded": "August 1968",
+        "releaseDate": "1969-03-28",
+        "studio": "Regent Sound Studios, Soho, London",
+        "label": "Decca",
+        "producer": "Jonathan King",
+        "credits": [
+            {
+                "personId": 0,
+                "credit": "Lead Vocals, Flute"
+            },
+            {
+                "personId": 1,
+                "credit": "Hammond Organ, Piano, Backing Vocals"
+            },
+            {
+                "personId": 2,
+                "credit": "Guitars, Backing Vocals"
+            },
+            {
+                "personId": 3,
+                "credit": "Bass Guitar, Guitar, Backing Vocals"
+            },
+            {
+                "personId": 4,
+                "credit": "Drums (except on \"Silent Sun \")"
+            },
+            {
+                "name": "Example name",
+                "credit": "Example credit"
+            }
+        ],
+        "artwork": {
+            "primary": {
+                "altText": "Album Artwork: A completely black background with the title \"From Genesis to Revelation\" at the top left corner, and the Decca logo at the top right corner, both in gold color.",
+                "imgId": 123
+            },
+            "additional": [
+                {
+                    "altText": "Additional Album Cover...",
+                    "imgId": 456
+                }
+            ]
+        },
+        "bodyText": "This is the body text for From Genesis to Revelation",
+        "links": [
+            "https://en.wikipedia.org/wiki/From_Genesis_to_Revelation",
+            "https://open.spotify.com/album/7ykLKrLtN920GC9SBKhpp9?si=bJJ76bkHRCW8GofT5TGLwQ"
+        ]
+    },
+    {
+        "title": "Trespass",
+        "type": "LP",
+        "slug": "from-genesis-to-revelation",
+        "artist": "GENESIS",
+        "recorded": "June-July 1970",
+        "releaseDate": "1970-10-23",
+        "studio": "Trident Studios, London",
+        "label": "Charisma",
+        "producer": "John Anthony",
+        "credits": [
+            {
+                "personId": 0,
+                "credit": "lead vocals, flute, accordion, tambourine, bass drum"
+            },
+            {
+                "personId": 1,
+                "credit": "Hammond organ, grand piano, Mellotron, acoustic 12-string guitar, vocals"
+            },
+            {
+                "personId": 2,
+                "credit": "acoustic 12-string guitar, lead electric guitar, dulcimer, vocals"
+            },
+            {
+                "personId": 3,
+                "credit": "acoustic 12-string guitar, electric bass guitar, classical guitar, cello, vocals"
+            },
+            {
+                "personId": 5,
+                "credit": "drums, percussion, vocals"
+            },
+            {
+                "name": "Example name",
+                "credit": "Example credit"
+            }
+        ],
+        "artwork": {
+            "primary": {
+                "altText": "Album Artwork: An abstract fantasy scene over a powder-blue background",
+                "imgId": 123
+            }
+        },
+        "bodyText": "This is the body text for Trespass",
+        "links": [
+            "https://en.wikipedia.org/wiki/Trespass_(album)",
+            "https://open.spotify.com/album/17hKeFpIov0cxAFQbGegEy?si=lSS-ixFVS6OIOcQtGRy4Qw"
+        ]
+    }
+]
