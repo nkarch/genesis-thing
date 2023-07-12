@@ -14,7 +14,7 @@ const creditSchema = new mongoose.Schema(
         name: {
             type: String,
             required: function () {
-                return !this.personId;
+                return this.personId < 0;
             },
         },
         credit: {
