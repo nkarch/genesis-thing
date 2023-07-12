@@ -19,33 +19,7 @@ const Home = () => {
 
     return (
         <>
-            <h1>All Releases:</h1>
-
-            {error ? (
-                <>Oh no, there was an error</>
-            ) : isLoading ? (
-                <>Loading...</>
-            ) : data ? (
-                <ul>
-                    {data.map((release) => (
-                        <li key={release.releaseId}>
-                            {release.title} ({release.releaseId})
-                        </li>
-                    ))}
-                </ul>
-            ) : null}
-
-            <h1>Single Release:</h1>
-
-            <p>(Just showing whatever is the last item in Releases object)</p>
-
-            {error1 ? (
-                <>Oh no, there was an error</>
-            ) : isLoading1 ? (
-                <>Loading...</>
-            ) : data1 ? (
-                <h3>{data1.title}</h3>
-            ) : null}
+            <h1>Home</h1>
         </>
     );
 };

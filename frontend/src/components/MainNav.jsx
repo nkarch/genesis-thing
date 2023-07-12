@@ -1,4 +1,7 @@
+import { Link as RouterLink } from "react-router-dom";
+
 import propTypes from "prop-types";
+
 import { useTheme } from "@mui/material/styles";
 
 import Box from "@mui/material/Box";
@@ -42,7 +45,9 @@ const MainNav = ({ mobileOpen, onDrawerClose }) => {
                     <List>
                         {links.map(({ text, path }, index) => (
                             <ListItem key={index} disablePadding>
-                                <ListItemButton>{text}</ListItemButton>
+                                <ListItemButton component={RouterLink} to={path}>
+                                    {text}
+                                </ListItemButton>
                             </ListItem>
                         ))}
                     </List>

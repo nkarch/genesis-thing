@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Routes, Route, Link } from "react-router-dom";
 
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 import { responsiveFontSizes } from "@mui/material";
@@ -10,6 +11,8 @@ import TopBar from "./components/TopBar";
 import MainNav from "./components/MainNav";
 
 import Home from "./pages/Home";
+import Discography from "./pages/Discography";
+import Release from "./pages/Release";
 
 const App = () => {
     // Theme Config
@@ -35,7 +38,11 @@ const App = () => {
                 <MainNav mobileOpen={mobileOpen} onDrawerClose={handleDrawerToggle} />
 
                 <Box component='main' sx={{ flexGrow: 1, p: 3, mt: 8 }}>
-                    <Home />
+                    <Routes>
+                        <Route path='/' element={<Home />} />
+                        <Route path='/discography' element={<Discography />} />
+                        <Route path='/discography/:slug' element={<Release />} />
+                    </Routes>
                 </Box>
             </Box>
         </ThemeProvider>
