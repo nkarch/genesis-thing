@@ -1,12 +1,22 @@
+import { useState, useEffect } from "react";
 import { useGetReleasesQuery, useGetReleaseQuery } from "./slices/releaseApiSlice";
 
 const App = () => {
+    const [singleRelease, setSingleRelease] = useState();
+
     const { data, error, isLoading } = useGetReleasesQuery();
+
     const {
         data: data1,
         error: error1,
         isLoading: isLoading1,
-    } = useGetReleaseQuery({ releaseId: 2 });
+    } = useGetReleaseQuery({ releaseId: singleRelease });
+
+    useEffect(() => {
+        if (data && data[data.length - 1].releaseId) {
+            setSingleRelease(data[data.length - 1].releaseId);
+        }
+    }, [data]);
 
     return (
         <>
@@ -16,16 +26,24 @@ const App = () => {
             ) : isLoading ? (
                 <>Loading...</>
             ) : data ? (
-                <>{data.releases.map((release) => release.title)}</>
+                <ul>
+                    {data.map((release) => (
+                        <li key={release.releaseId}>
+                            {release.title} ({release.releaseId})
+                        </li>
+                    ))}
+                </ul>
             ) : null}
+
             <h1>Single Release:</h1>
+            <p>(Just showing whatever is the last item in Releases object)</p>
 
             {error1 ? (
                 <>Oh no, there was an error</>
             ) : isLoading1 ? (
                 <>Loading...</>
             ) : data1 ? (
-                <>{data1.title}</>
+                <h3>{data1.title}</h3>
             ) : null}
         </>
     );
