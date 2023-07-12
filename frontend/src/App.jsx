@@ -1,51 +1,44 @@
-import { useState, useEffect } from "react";
-import { useGetReleasesQuery, useGetReleaseQuery } from "./slices/releaseApiSlice";
+import { useState } from "react";
+
+import { ThemeProvider, createTheme } from "@mui/material/styles";
+import { responsiveFontSizes } from "@mui/material";
+
+import CssBaseline from "@mui/material/CssBaseline";
+import Box from "@mui/material/Box";
+
+import TopBar from "./components/TopBar";
+import MainNav from "./components/MainNav";
+
+import Home from "./pages/Home";
 
 const App = () => {
-    const [singleRelease, setSingleRelease] = useState();
+    // Theme Config
+    let darkTheme = createTheme({
+        palette: {
+            mode: "dark",
+        },
+    });
 
-    const { data, error, isLoading } = useGetReleasesQuery();
+    darkTheme = responsiveFontSizes(darkTheme);
 
-    const {
-        data: data1,
-        error: error1,
-        isLoading: isLoading1,
-    } = useGetReleaseQuery({ releaseId: singleRelease });
+    // Main Nav Control
+    const [mobileOpen, setMobileOpen] = useState(false);
 
-    useEffect(() => {
-        if (data && data[data.length - 1].releaseId) {
-            setSingleRelease(data[data.length - 1].releaseId);
-        }
-    }, [data]);
+    const handleDrawerToggle = () => setMobileOpen(!mobileOpen);
 
     return (
-        <>
-            <h1>All Releases:</h1>
-            {error ? (
-                <>Oh no, there was an error</>
-            ) : isLoading ? (
-                <>Loading...</>
-            ) : data ? (
-                <ul>
-                    {data.map((release) => (
-                        <li key={release.releaseId}>
-                            {release.title} ({release.releaseId})
-                        </li>
-                    ))}
-                </ul>
-            ) : null}
+        <ThemeProvider theme={darkTheme}>
+            <CssBaseline />
 
-            <h1>Single Release:</h1>
-            <p>(Just showing whatever is the last item in Releases object)</p>
+            <Box sx={{ display: "flex" }}>
+                <TopBar onToggleClick={handleDrawerToggle} />
+                <MainNav mobileOpen={mobileOpen} onDrawerClose={handleDrawerToggle} />
 
-            {error1 ? (
-                <>Oh no, there was an error</>
-            ) : isLoading1 ? (
-                <>Loading...</>
-            ) : data1 ? (
-                <h3>{data1.title}</h3>
-            ) : null}
-        </>
+                <Box component='main' sx={{ flexGrow: 1, p: 3, mt: 8 }}>
+                    <Home />
+                </Box>
+            </Box>
+        </ThemeProvider>
     );
 };
 
