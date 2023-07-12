@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { Route, Link as RouterLink } from "react-router-dom";
 
-import { useGetReleasesQuery, useGetReleaseQuery } from "../slices/releaseApiSlice";
+import { useGetReleasesQuery } from "../slices/releaseApiSlice";
 
 const Discography = () => {
     const { data, error, isLoading } = useGetReleasesQuery();
@@ -25,7 +25,7 @@ const Discography = () => {
                 <ul>
                     {data.map((release) => (
                         <li key={release.releaseId}>
-                            <RouterLink to={`./${release.releaseId}`}>
+                            <RouterLink to={`./${release.slug}`}>
                                 {release.title} ({release.releaseId})
                             </RouterLink>
                         </li>

@@ -1,9 +1,9 @@
 import { useParams } from "react-router-dom";
 
-import { useGetReleaseQuery } from "../slices/releaseApiSlice";
+import { useGetReleaseBySlugQuery } from "../slices/releaseApiSlice";
 
 const Release = () => {
-    const { data, error, isLoading } = useGetReleaseQuery({ releaseId: useParams().slug });
+    const { data, error, isLoading } = useGetReleaseBySlugQuery({ slug: useParams().slug });
 
     return (
         <div>

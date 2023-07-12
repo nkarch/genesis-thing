@@ -10,12 +10,12 @@ export const releaseApiSlice = apiSlice.injectEndpoints({
                 method: "GET",
             }),
         }),
-        getRelease: builder.query({
+        getReleaseBySlug: builder.query({
             query: (data) => {
-                if (!data?.releaseId) return {};
+                if (!data?.slug) return {};
 
                 return {
-                    url: `${RELEASES_URL}/${data.releaseId}`,
+                    url: `${RELEASES_URL}/${data.slug}`,
                     method: "GET",
                 };
             },
@@ -23,4 +23,4 @@ export const releaseApiSlice = apiSlice.injectEndpoints({
     }),
 });
 
-export const { useGetReleasesQuery, useGetReleaseQuery } = apiSlice;
+export const { useGetReleasesQuery, useGetReleaseBySlugQuery } = apiSlice;
