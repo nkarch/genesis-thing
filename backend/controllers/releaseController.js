@@ -3,7 +3,7 @@ import { Release } from "../models/releaseModel.js";
 const getReleases = async (req, res) => {
     const releases = await Release.find({});
 
-    res.json({ releases });
+    res.json(releases);
 };
 
 const getRelease = async (req, res) => {
