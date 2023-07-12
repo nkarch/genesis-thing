@@ -11,10 +11,14 @@ export const releaseApiSlice = apiSlice.injectEndpoints({
             }),
         }),
         getRelease: builder.query({
-            query: (data) => ({
-                url: `${RELEASES_URL}/${data.releaseId}`,
-                method: "GET",
-            }),
+            query: (data) => {
+                if (!data?.releaseId) return {};
+
+                return {
+                    url: `${RELEASES_URL}/${data.releaseId}`,
+                    method: "GET",
+                };
+            },
         }),
     }),
 });
