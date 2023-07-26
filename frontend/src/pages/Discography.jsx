@@ -1,17 +1,9 @@
-import { useState, useEffect } from "react";
-import { Route, Link as RouterLink } from "react-router-dom";
+import { Link as RouterLink } from "react-router-dom";
 
 import { useGetReleasesQuery } from "../slices/releaseApiSlice";
 
 const Discography = () => {
     const { data, error, isLoading } = useGetReleasesQuery();
-    // const [singleRelease, setSingleRelease] = useState(null);
-
-    // useEffect(() => {
-    //     if (data && data[data.length - 1].releaseId) {
-    //         setSingleRelease(data[data.length - 1].releaseId);
-    //     }
-    // }, [data]);
 
     return (
         <>
