@@ -1,6 +1,8 @@
 import mongoose from "mongoose";
 import { autoIncrement } from "mongoose-plugin-autoinc";
 
+import { mediaSchema } from "./mediaModel.js";
+
 import { Formats, Artists } from "../enums.js";
 
 const creditSchema = new mongoose.Schema(
@@ -25,28 +27,14 @@ const creditSchema = new mongoose.Schema(
     { _id: false }
 );
 
-const artworkSchema = new mongoose.Schema(
-    {
-        altText: {
-            type: String,
-            required: false,
-        },
-        imgId: {
-            type: Number,
-            required: true,
-        },
-    },
-    { _id: false }
-);
-
 const artworkGroupSchema = new mongoose.Schema(
     {
         primary: {
-            type: artworkSchema,
+            type: mediaSchema,
             required: false,
         },
         additional: {
-            type: [artworkSchema],
+            type: [mediaSchema],
             required: false,
         },
     },

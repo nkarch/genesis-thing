@@ -5,6 +5,7 @@ import connectDB from "./config/db.js";
 import * as url from "url";
 
 import releaseRoutes from "./routes/releaseRoutes.js";
+import mediaRoutes from "./routes/mediaRoutes.js";
 
 dotenv.config();
 
@@ -20,6 +21,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 app.use("/api/releases/", releaseRoutes);
+app.use("/api/media/", mediaRoutes);
 
 app.use(express.static(__dirname + "/static"));
 
