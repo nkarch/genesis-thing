@@ -42,7 +42,7 @@ const MainNav = ({ mobileOpen, onDrawerClose }) => {
                 }}
             >
                 <Box sx={{ overflow: "auto", pt: 8 }}>
-                    <List>
+                    <List sx={{ py: 0 }}>
                         {links.map(({ text, path }, index) => (
                             <ListItem key={index} disablePadding>
                                 <ListItemButton component={RouterLink} to={path}>
