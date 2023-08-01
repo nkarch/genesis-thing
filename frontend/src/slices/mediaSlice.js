@@ -1,4 +1,4 @@
-import { apiSlice } from "./apiSlice";
+import { apiSlice } from "./slicesConfig";
 
 const MEDIA_URL = "/api/media";
 
