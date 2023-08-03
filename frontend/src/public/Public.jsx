@@ -1,8 +1,11 @@
 import { useState } from "react";
 import { Routes, Route } from "react-router-dom";
+import { Provider } from "react-redux";
 
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 import { responsiveFontSizes } from "@mui/material";
+
+import { store } from "./store";
 
 import CssBaseline from "@mui/material/CssBaseline";
 import Box from "@mui/material/Box";
@@ -30,22 +33,24 @@ const Public = () => {
     const handleDrawerToggle = () => setMobileOpen(!mobileOpen);
 
     return (
-        <ThemeProvider theme={darkTheme}>
-            <CssBaseline />
+        <Provider store={store}>
+            <ThemeProvider theme={darkTheme}>
+                <CssBaseline />
 
-            <Box sx={{ display: "flex" }}>
-                <TopBar onToggleClick={handleDrawerToggle} />
-                <MainNav mobileOpen={mobileOpen} onDrawerClose={handleDrawerToggle} />
+                <Box sx={{ display: "flex" }}>
+                    <TopBar onToggleClick={handleDrawerToggle} />
+                    <MainNav mobileOpen={mobileOpen} onDrawerClose={handleDrawerToggle} />
 
-                <Box component='main' sx={{ flexGrow: 1, p: 3, mt: 8 }}>
-                    <Routes>
-                        <Route path='/' element={<Home />} />
-                        <Route path='/discography' element={<Discography />} />
-                        <Route path='/discography/:slug' element={<Release />} />
-                    </Routes>
+                    <Box component='main' sx={{ flexGrow: 1, p: 3, mt: 8 }}>
+                        <Routes>
+                            <Route path='/' element={<Home />} />
+                            <Route path='/discography' element={<Discography />} />
+                            <Route path='/discography/:slug' element={<Release />} />
+                        </Routes>
+                    </Box>
                 </Box>
-            </Box>
-        </ThemeProvider>
+            </ThemeProvider>
+        </Provider>
     );
 };
 

@@ -4,7 +4,7 @@ import Public from "./public/Public";
 import Admin from "./admin/Admin";
 
 const App = () => {
-    if (useLocation().pathname === "/admin") {
+    if (useLocation().pathname.includes("/admin")) {
         return <Admin />;
     }
 
