@@ -6,6 +6,7 @@ import * as url from "url";
 
 import releaseRoutes from "./routes/releaseRoutes.js";
 import mediaRoutes from "./routes/mediaRoutes.js";
+import wikiRoutes from "./routes/wikiRoutes.js";
 
 dotenv.config();
 
@@ -22,6 +23,7 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use("/api/releases/", releaseRoutes);
 app.use("/api/media/", mediaRoutes);
+app.use("/api/wiki/", wikiRoutes);
 
 app.use(express.static(__dirname + "/static"));
 
