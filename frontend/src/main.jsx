@@ -1,13 +1,13 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import { BrowserRouter } from "react-router-dom";
+import { BrowserRouter, useLocation } from "react-router-dom";
 
 import { Provider } from "react-redux";
 
 import "./index.css";
 
 import App from "./App.jsx";
-import { store } from "./store";
+import { store } from "./public/store";
 
 import "@fontsource/roboto/300.css";
 import "@fontsource/roboto/400.css";
